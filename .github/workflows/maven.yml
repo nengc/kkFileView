@@ -22,10 +22,14 @@ jobs:
       - name: Maven Build
         run: mvn -B clean package -Dmaven.test.skip=true
 
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
+      - name: Upload Linux Artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: BUILD_ARTIFACT
-          path: |
-            server/target/kkFileView-*.tar.gz
-            server/target/kkFileView-*.zip
+          name: BUILD_ARTIFACT_LINUX
+          path: server/target/kkFileView-*.tar.gz
+
+      - name: Upload Windows Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: BUILD_ARTIFACT_WINDOWS
+          path: server/target/kkFileView-*.zip
